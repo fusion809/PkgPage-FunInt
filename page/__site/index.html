@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- META -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Thibaut Lienart and Zlatan Vasović">
+  <title>FunctionIntegrator.jl</title>
+
+  <link rel="icon" type="image/png"  href="/assets/favicon.ico">
+
+  <!-- CSS -->
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/atom-one-dark.css">
+   
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <style>.bg-primary {
+  background-color: #3f6388 !important;
+}
+
+a {
+  color: #2669DD;
+}
+
+a:hover {
+  color: teal;
+}
+
+.section-bg-color {
+  background-color: #f6f8fa;
+}
+
+footer a {
+  color: cornflowerblue;
+}
+
+
+header {
+  margin-top: 55px !important;
+}
+
+
+
+.jumbotron {
+  background-image: url("assets/diagonal-lines.svg");
+  background-repeat: repeat;
+}
+
+
+/* CODE ADJUSTMENTS */
+
+pre code.hljs {
+  border-radius: 10px;
+}
+
+pre code.hljs.plaintext {
+  margin-left: 15px;
+}
+
+tr {
+  text-align: left;
+}
+</style>
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+  <div class="container">
+    <span class="navbar-brand">
+      
+        <img src="/assets/logo.svg" class="img-fluid" style="max-height:     25px;
+padding-right:  10px;
+" alt="Logo"/>
+      
+      <a href="#page-top">FunctionIntegrator.jl</a>
+      
+    </span>
+    <input type="checkbox" id="navbar-toggler-cbox" class="d-none" />
+    <label for="navbar-toggler-cbox" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </label>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#getting_started">Getting started</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#choice_of_function">Choice of function</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#showing_code">Showing Code</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#deployment">Deployment</a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <header class="text-white text-center">
+  
+    <div class="jumbotron jumbotron-fluid container-fluid bg-primary">
+  
+    <h1>FunctionIntegrator.jl</h1>
+    <div class="lead">Create a beautiful landing page for your package in less
+than 10 minutes.
+</div>
+    
+      <a class="github-button" href="https://github.com/tlienart/PkgPage.jl" data-size="large" aria-label="View FunctionIntegrator.jl on GitHub">View on GitHub</a>
+    
+    
+      <a class="github-button" href="https://github.com/tlienart/PkgPage.jl" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star FunctionIntegrator.jl on GitHub">Star</a>
+    
+  </div>
+</header>
+
+  <!-- Content appended here -->
+<div class="franklin-content"><section id="about" class="scrollspy">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2>
+          About this Package
+        </h2>
+
+<p><img src="https://github.com/fusion809/FunctionIntegrator.jl/workflows/CompatHelper/badge.svg" alt="CompatHelper" /> <img src="https://github.com/fusion809/FunctionIntegrator.jl/workflows/TagBot/badge.svg" alt="TagBot" /> <img src="https://travis-ci.com/fusion809/FunctionIntegrator.jl.svg?branch&#61;master" alt="Travis" /></p>
+<p><a href="https://github.com/fusion809/FunctionIntegrator.jl">FunctionIntegrator.jl</a> should be treated as a second-rate alternative to the excellent <a href="https://github.com/JuliaMath/QuadGK.jl">QuadGK</a> package. QuadGK provides more accurate integration for many problems, and also provides an error estimate which functions in this package do not. Likewise this package is less user-friendly as it requires you to decide which \(N\) value you are going to go with.</p>
+<p>This package provides the following functions:</p>
+<ul>
+<li><p><code>chebyshev_quadrature&#40;f::Function, N::Number, k::Integer, a::Number, b::Number&#41;</code></p>
+</li>
+<li><p><code>hermite_quadrature&#40;f::Function, N::Number, k::Integer&#41;</code></p>
+</li>
+<li><p><code>jacobi_quadrature&#40;f::Function, N::Number, α::Number, β::Number, a::Number, b::Number&#41;</code></p>
+</li>
+<li><p><code>laguerre_quadrature&#40;f::Function, N::Number, k::Integer&#41;</code></p>
+</li>
+<li><p><code>legendre_quadrature&#40;f::Function, N::Number, a::Number, b::Number&#41;</code></p>
+</li>
+<li><p><code>lobatto_quadrature&#40;f::Function, N::Number, a::Number, b::Number&#41;</code></p>
+</li>
+<li><p><code>radau_quadrature&#40;f::Function, N::Number, a::Number, b::Number&#41;</code></p>
+</li>
+<li><p><code>rectangle_rule_left&#40;f::Function, N::Number, a::Number, b::Number&#41;</code></p>
+</li>
+<li><p><code>rectangle_rule_midpoint&#40;f::Function, N::Number, a::Number, b::Number&#41;</code></p>
+</li>
+<li><p><code>rectangle_rule_right&#40;f::Function, N::Number, a::Number, b::Number&#41;</code></p>
+</li>
+<li><p><code>simpsons_rule&#40;f::Function, N::Number, a::Number, b::Number&#41;</code></p>
+</li>
+<li><p><code>trapezoidal_rule&#40;f::Function, N::Number, a::Number, b::Number&#41;</code></p>
+</li>
+</ul>
+<p>use Julia&#39;s help function &#40;e.g. by typing <code>?chebyshev_quadrature</code>&#41; to find out usage information, should you need it. The choice of function table below also explains some of the details of each of these functions, such as their arguments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="getting_started" class="scrollspy section-bg-color">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2>
+          Getting started
+        </h2>
+ This package is currently in Julia&#39;s General registry, thus to install it one merely needs to run:</p>
+<pre><code class="language-julia-repl">(v1.4) pkg> add FunctionIntegrator</code></pre>
+<p>and import it using:</p>
+<pre><code class="language-julia-repl">julia> using FunctionIntegrator</code></pre>       </div>
+    </div>
+  </div>
+</section>
+
+<section id="choice_of_function" class="scrollspy">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2>
+          Choice of function
+        </h2>
+ As a general rule of thumb, <code>simpsons_rule</code> should be the function you use when you are unsure which function to use as its approximations with large N &#40;e.g. \(1 \times 10^{4}\)&#41; are nearly always accurate to at least 6 digits. Despite this, for many problems some of the <code>_quadrature</code> functions may provide more accurate results with a smaller N value. The main time when <code>simpsons_rule</code> should be avoided is when there are unremovable singularities at the endpoints of the domain of integration, in which case using <code>chebyshev_quadrature</code> with \(k=1\) or using <code>legendre_quadrature</code> is likely best.</p>
+<p>Each of the functions whose name ends with <code>_quadrature</code> uses <a href="https://en.wikipedia.org/wiki/Gaussian_quadrature">Gaussian quadrature</a>, the specifics of which differ between functions. Out of them, <code>legendre_quadrature</code> is perhaps the best to go with when you are uncertain which out of the <code>_quadrature</code> functions to go with as it can be applied to any grid and any problem and <em>usually</em> arrives at a result that is accurate to at least 7 decimal places provided \(N \geq 1 \times 10^{4}\). <code>legendre_quadrature</code> has the added benefit of being perhaps the fastest <code>_quadrature</code> function after controlling for accuracy of the result obtained.</p>
+<p>The <a href="https://github.com/fusion809/FunctionIntegrator.jl/tree/master/test/">test/</a> folder has test scripts that approximate various different integrals &#40;each file, except <a href="https://github.com/fusion809/FunctionIntegrator.jl/blob/master/test/runtests.jl">test/runtests.jl</a>, pertains to a different integral&#41;; the N values given are the smallest possible to pass each of the tests listed &#40;except when the test involves a less than &#40;&lt;&#41; sign&#41;. If you want to know which function to use for which integral, these tests may be useful as a rough guide.</p>
+
+<figure float="center">
+    <img src="/assets/Root_mean_square_computation_time_FunctionIntegrator.jl.svg" width="100%">
+    <figcaption><b>Figure 1: a bar graph to compare the computation times for each fo the flexible-domain methods provided by the package, except <code>rectange_rule_left</code> and <code>rectangle_rule_right</code>.<sup>1</sup> Data is from <a href="https://travis-ci.com/github/fusion809/FunctionIntegrator.jl/jobs/355708079" link="_blank">this build</a>.</b></caption>
+</figure>
+
+<table><tr><th align="right">Function</th><th align="right">Domain<sup>2</sup></th><th align="right">Weight</th><th align="right">Arguments</th><th align="right">Notes</th></tr><tr><td align="right"><code>chebyshev_quadrature</code></td><td align="right">\([a,b]\)<br/>\(x\in[-1,1]\)</td><td align="right">\(k=1\): \(\dfrac{1}{\sqrt{1-x^2}}\)<br/><br/>\(k=2\): \(\sqrt{1-x^2}\)<br/><br/>\(k=3\): \(\sqrt{\dfrac{1+x}{1-x}}\)<br/><br/>\(k=4\): \(\sqrt{\dfrac{1-x}{1+x}}\)</td><td align="right"><code>f</code>, the function being integrated. <br/><code>N</code>, the number of grid points.<br/><code>k</code>, the type of Chebyshev quadrature being used. 1, 2, 3, and 4 refer to the Chebyshev \(T_n\), \(U_n\), \(V_n\) and \(W_n\) polynomials respectively.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses <a href="https://en.wikipedia.org/wiki/Chebyshev&#37;E2&#37;80&#37;93Gauss_quadrature">Chebyshev-Gauss quadrature</a> &#40;note this article does not mention 3rd and 4th quadrature types, corresponding to \(k=3\) and \(k=4\), respectively&#41;. If there are unremovable singularities at the endpoints, it with \(k=1\) or <code>legendre_quadrature</code> are preferred.</td></tr><tr><td align="right"><code>hermite_quadrature</code></td><td align="right">\([-\infty,\infty]\)</td><td align="right">\(e^{-x^2}\)</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>, the number of grid points.<br/><code>k</code> determines the problem being solved &#40;whether \(e^{-x^2}\) is assumed to be part of the integrand &#40;\(k=2\)&#41; or not&#41;.</td><td align="right">Uses <a href="https://en.wikipedia.org/wiki/Gauss&#37;E2&#37;80&#37;93Hermite_quadrature">Gauss-Hermite quadrature</a>. Only use this if your integration domain is \([-\infty,\infty]\) and your integrand rapidly goes to zero as the absolute value of \(x\) gets larger.</td></tr><tr><td align="right"><code>jacobi_quadrature</code></td><td align="right">\([a,b]\)<br/>\(x\in[-1,1]\)</td><td align="right">\((1-x)^{\alpha}(1+x)^{\beta}\)</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>, the number of grid points.<br/><code>α</code> and <code>β</code> are parameters of the weighting function.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses <a href="https://en.wikipedia.org/wiki/Gauss&#37;E2&#37;80&#37;93Hermite_quadrature">Gauss-Jacobi quadrature</a>. After controlling for <code>N</code> it is one of the slowest quadrature methods. A condition of Gauss-Jacobi quadrature is that \(\alpha, \beta \gt -1\). When \(\alpha = \beta = 0\), this reduces to <code>legendre_quadrature</code>.</td></tr><tr><td align="right"><code>laguerre_quadrature</code></td><td align="right">\([0,\infty]\)</td><td align="right">\(e^{-x}\)</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>, the number of grid points.<br/><code>k</code> determines the problem being solved &#40;whether \(e^{-x}\) is assumed to be part of the integrand &#40;\(k=2\)&#41; or not&#41;.</td><td align="right">Uses <a href="https://en.wikipedia.org/wiki/Gauss&#37;E2&#37;80&#37;93Laguerre_quadrature">Gauss-Laguerre quadrature</a>. Only use this if your integration domain is \([0,\infty]\) and your integrand rapidly goes to \(0\) as \(x\) gets larger.</td></tr><tr><td align="right"><code>legendre_quadrature</code></td><td align="right">\([a,b]\)<br/>\(x\in[-1,1]\)</td><td align="right">1</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>, the number of grid points.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses <a href="https://en.wikipedia.org/wiki/Gauss&#37;E2&#37;80&#37;93Legendre_quadrature">Gauss-Legendre quadrature</a>. Generally, this is the best <code>_quadrature</code> function to go with when you are otherwise unsure which to go with.</td></tr><tr><td align="right"><code>lobatto_quadrature</code></td><td align="right">\([a,b]\)<br/>\(x\in[-1,1]\)</td><td align="right">1</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>, the number of grid points.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses <a href="https://en.wikipedia.org/wiki/Gaussian_quadrature#Gauss&#37;E2&#37;80&#37;93Lobatto_rules">Gauss-Lobatto quadrature</a>. This function includes, in the calculation, the values of the integrand at one of the endpoints. Consequently, if there are unremovable singularities at the endpoints, this function may fail to give an accurate result even if you adjust the endpoints slightly to avoid the singularities.</td></tr><tr><td align="right"><code>radau_quadrature</code></td><td align="right">\([a,b]\)<br/>\(x\in[-1,1]\)</td><td align="right">1</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>, the number of grid points.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses Gauss–Radau quadrature, for which there is no Wikipedia article, the best article &#40;simplest&#41; I could find on it are <a href="https://web.archive.org/web/20200628202423/http://www.math.hkbu.edu.hk/ICM/LecturesAndSeminars/08OctMaterials/2/Slide3.pdf">these lecture notes</a>. This function includes, in the calculation, the values of the function at the endpoints. Consequently, if there are unremovable singularities at either or both of the endpoints, this function will fail to give an accurate result even if you adjust the endpoints slightly to avoid the singularities.</td></tr><tr><td align="right"><code>rectangle_rule_left</code></td><td align="right">\([a,b]\)</td><td align="right">N/A</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>. \(N\) is the number of grid points used in the integration.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses the rectangle rule, specifically the <a href="https://en.wikipedia.org/wiki/Riemann_sum#Left_Riemann_sum">left Riemann sum</a>. Usually this or <code>rectangle_rule_right</code> is the least accurate method. In fact, many of the tests in the FunctionIntegrator.jl repository fail to get accuracy to 7 significant figures with <code>rectangle_rule_left</code> with any practically viable value of <code>N</code>.</td></tr><tr><td align="right"><code>rectangle_rule_midpoint</code></td><td align="right">\([a,b]\)</td><td align="right">N/A</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>. \(N\) is the number of grid points used in the integration.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses the rectangle rule, specifically the <a href="https://en.wikipedia.org/wiki/Riemann_sum#Midpoint_rule">Riemann midpoint rule</a>. Usually this is more accurate than <code>rectangle_rule_left</code> and <code>rectangle_rule_right</code> and sometimes rivals <code>trapezoidal_rule</code> for accuracy. Interestingly, going by my Travis tests it appears to be even more efficient than <code>simpsons_rule</code>.</td></tr><tr><td align="right"><code>rectangle_rule_right</code></td><td align="right">\([a,b]\)</td><td align="right">N/A</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>. \(N\) is the number of grid points used in the integration.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses the rectangle rule, specifically the <a href="https://en.wikipedia.org/wiki/Riemann_sum#Right_Riemann_sum">right Riemann sum</a>. Usually this or <code>rectangle_rule_left</code> is the least accurate method. In fact, many of the tests in the FunctionIntegrator.jl repository fail to get accuracy to 7 significant figures with <code>rectangle_rule_right</code> with any practically viable value of <code>N</code>.</td></tr><tr><td align="right"><code>simpsons_rule</code></td><td align="right">\([a,b]\)</td><td align="right">N/A</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>. \(N+1\) is the number of grid points, if endpoints are included.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses <a href="https://en.wikipedia.org/wiki/Simpson&#37;27s_rule">Simpson&#39;s rule</a>. It is one of the best functions to use when you are unsure which to use, provided there are no unremovable singularities within the integration domain, including the endpoints.</td></tr><tr><td align="right"><code>trapezoidal_rule</code></td><td align="right">\([a,b]\)</td><td align="right">N/A</td><td align="right"><code>f</code>, the function being integrated.<br/><code>N</code>. \(N+1\) is the number of grid points, if endpoints are included.<br/><code>a</code>, the start of the domain of integration.<br/><code>b</code>, the end of the domain of integration.</td><td align="right">Uses the <a href="https://en.wikipedia.org/wiki/Trapezoidal_rule">trapezoidal rule</a>. It has the same caveats as <code>simpsons_rule</code>.</td></tr></table>
+<p><strong>Notes</strong>:</p>
+<ol>
+<li><p><code>rectangle_rule_left</code>, <code>rectangle_rule_midpoint</code> and <code>rectangle_rule_right</code> are not included because they failed to provide the required level of accuracy for many tests with all practically viable <code>N</code> values.</p>
+</li>
+<li><p>The \(x\in[-1,1]\) refers to the quadrature nodes, which are also referred to in the weighting function column.</p>
+</li>
+</ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="showing_code" class="scrollspy section-bg-color">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2>
+          Showing Code
+        </h2>
+
+<div class="lead">Franklin can run your Julia code on the fly and show the output.</div>
+<p><strong>Setting up the environment</strong>: the first step is to ensure that the folder with your source has the proper environment including your package. To do so, in the Julia REPL, navigate to the source &#40;e.g. <code>cd&#40;&quot;page/&quot;&#41;</code>&#41;, activate the environment &#40;e.g. <code>using Pkg; Pkg.activate&#40;&#41;</code>&#41; and add the package&#40;s&#41; that you need &#40;e.g. <code>Pkg.add&#40;&quot;DataFrames&quot;&#41;</code>&#41;. If you check the status or the Project.toml, you will see that <code>Franklin</code> is already in there on top of whatever packages you might have chosen to add. In our current case:</p>
+<pre><code class="language-julia">Status `~/.julia/dev/PkgPage/page/Project.toml`
+  [a93c6f00] DataFrames v0.21.2
+  [713c75ef] Franklin v0.8.2</code></pre>
+<p>Also add the package in the <code>DeployPage.yml</code> e.g. in our case there is:</p>
+<pre><code class="language-julia">Pkg.add(["NodeJS", "DataFrames"]);</code></pre>
+<p>Once that&#39;s set up, you can use &quot;named&quot; code blocks i.e. code blocks that look like</p>
+<pre><code class="language-julia">```julia:ex
+using DataFrames
+df = DataFrame(A = 1:4, B = ["M", "F", "F", "M"])
+first(df, 3)
+```</code></pre>
+<p>where <code>:ex</code> is the &quot;named part&quot; &#40;<code>ex</code> being the name, which should be unique on the page&#41;.</p>
+<pre><code class="language-julia">using DataFrames
+df = DataFrame(A = 1:4, B = ["M", "F", "F", "M"])
+first(df, 3)</code></pre><pre><code class="plaintext">ArgumentError: Package DataFrames [a93c6f00-e57d-5684-b7b6-d8193f3e46c0] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+</code></pre>
+<p>You can control the indentation and appearance of the output block in the <code>config.md</code> too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="deployment" class="scrollspy">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2>
+          Deployment
+        </h2>
+
+<div class="lead">Make your page available online easily by leveraging GitHub Actions and GitHub Pages.</div>
+<p>By following these instructions, the content of the rendered website will be copied to a <code>gh-pages</code> branch where it will be deployed by GitHub. If you would like to deploy the page with your own URL or using something else than GitHub, have a look at the specific instructions further on.</p>
+<p><strong>Adjust DeployPage</strong>: start by checking the <code>.github/workflows/DeployPage.yml</code> in particular:</p>
+<ul>
+<li><p>if you want to use Python or matplotlib, uncomment the relevant lines</p>
+</li>
+<li><p>in the <code>run</code> block ensure that</p>
+<ul>
+<li><p><code>NodeJS</code> and <code>PkgPage</code> are added,</p>
+</li>
+<li><p>any packages that your page might rely on are added,</p>
+</li>
+<li><p>the <code>optimize</code> call has the appropriate <code>input</code> and <code>output</code> path &#40;if you&#39;re in the default setting, leave as is&#41;.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Keys</strong>: in order to have your page be built and deployed on GitHub, you will need to generate a keypair and add it to the GitHub repo. To do so:</p>
+<ol>
+<li><p>run in your terminal <code>ssh-keygen -N &quot;&quot; -f franklin</code>,</p>
+</li>
+<li><p>copy the entire content of the generated <code>franklin</code> file and put it as a new secret named <code>FRANKLIN_PRIV</code> on <a href="https://github.com/USERNAME/PACKAGE.jl/settings/secrets/new">https://github.com/USERNAME/PACKAGE.jl/settings/secrets/new</a>,</p>
+</li>
+<li><p>copy the entire content of the generated <code>franklin.pub</code> file and put it as a new deploy key named <code>FRANKLIN_PUB</code> on <a href="https://github.com/USERNAME/PACKAGE.jl/settings/keys">https://github.com/USERNAME/PACKAGE.jl/settings/keys</a> with <code>read/write</code> access,</p>
+</li>
+<li><p>remove both files.</p>
+</li>
+</ol>
+<p><strong>GitIgnore</strong>: it&#39;s important you specify that <code>page/__site</code> should be ignored by git and not pushed to your repository otherwise the build process might not work properly. To do so create a file <code>.gitignore</code> containing the line</p>
+<pre><code class="language-julia">page/__site</code></pre>
+<p>as shown <a href="https://github.com/tlienart/PkgPage.jl/blob/cce098535eb95c2c3ba919d605792abfee57710c/.gitignore#L3">here</a>.</p>
+<p><strong>GitAttributes</strong>: in order for GitHub to ignore <code>page</code> folder it the language statistics for your repository, make sure to add a file <code>.gitattributes</code> with content</p>
+<pre><code class="language-julia">page/* linguist-vendored</code></pre>
+<p>like <a href="https://github.com/tlienart/PkgPage.jl/blob/master/.gitattributes">this</a>.</p>
+<p>Now if you push your changes and, generally, whenever the <code>master</code> branch of your package gets updated, the  build process will be triggered and your page updated and deployed. <strong>That&#39;s it</strong>.</p>
+<p><strong>Avoiding clashes with Documenter.jl</strong>: if you already use <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> you might want your page to be deployed in a specific folder of <code>gh-pages</code> as Documenter also generates files in <code>gh-pages</code>.</p>
+<div class="alert alert-info" role="alert">
+ This will typically not be necessary as the names created by PkgPage and Documenter don&#39;t clash, but you might still prefer to avoid mixing the two &#40;in which case, read on&#41;. </div>
+<p>you can do so in two steps:</p>
+<ol>
+<li><p>change the <code>run</code> part of <code>DeployPage.yml</code> by specifying the <code>output</code> keyword argument  in <code>PkgPage.optimize</code> for instance: <code>PkgPage.optimize&#40;input&#61;&quot;page&quot;, output&#61;&quot;page&quot;&#41;</code>,</p>
+</li>
+<li><p>change the <code>prepath</code> in <code>config.md</code> to reflect that the base URL will contain that additional folder, for instance <code>@def prepath &#61; &quot;YourPackage.jl/page&quot;</code>.</p>
+</li>
+</ol>
+<p><strong>Use your own URL</strong>: you can usually get host services like Netlify to deploy a specific branch of a GitHub repo, do make sure to set <code>@def prepath &#61; &quot;&quot;</code> in your <code>config.md</code> though.</p>
+<p>If you want to do the deployment without GitHub actions then you will need to:</p>
+<ul>
+<li><p>ensure you have <code>purgecss</code> and <code>highlights</code> installed and available to <code>NodeJS</code>, the simplest way to do this is to install them via <code>NodeJS</code> with</p>
+</li>
+</ul>
+<pre><code class="language-julia">using NodeJS;
+run(`$(npm_cmd()) install highlight.js`);
+run(`$(npm_cmd()) install purgecss`);</code></pre> <br/>
+<ul>
+<li><p>run <code>PkgPage.optimize&#40;input&#61;&quot;page&quot;, output&#61;&quot;&quot;&#41;</code> &#40;adapting <code>input</code> as required&#41;</p>
+</li>
+<li><p>place the content of <code>page/__site</code> wherever your server requires it.</p>
+</li>
+</ul>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">&copy; Thibaut Lienart and Zlatan Vasović. Website powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>, <a href="https://github.com/tlienart/PkgPage.jl">PkgPage.jl</a> and the <a href="https://julialang.org">Julia</a> programming language.</p>
+  </div>
+</footer>
+</div><!-- CONTENT ENDS HERE -->
+  
+      <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+  
+  
+      <script src="/libs/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+
+  
+  <script src="/libs/simple-scrollspy.min.js"></script>
+  <script>
+  window.onload = function () {
+    scrollSpy('#navbarResponsive', {
+      sectionClass: '.scrollspy',
+      menuActiveTarget: '.nav-link',
+      offset: 100
+    })
+  }
+  </script>
+  </body>
+</html>
